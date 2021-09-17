@@ -4,6 +4,7 @@ from rest_framework import serializers
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 
 from core.models import CheckList, CheckListItem
 from core.serializers import CheckListSeralizer, CheckListItemSeralizer
@@ -19,6 +20,7 @@ class TestAPIView(APIView):
 
 class CheckListsAPIView(APIView):
     seriailizer_class = CheckListSeralizer
+    permission_classes = [IsAuthenticated]
 
     def get(self, request, format=None):
         data = CheckList.objects.all()

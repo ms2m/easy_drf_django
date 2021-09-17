@@ -10,12 +10,14 @@ from core.models import CheckList, CheckListItem
 #     updated_on = serializers.DateTimeField()
 
 
-class CheckListSeralizer(serializers.ModelSerializer):
-    class Meta:
-        model = CheckList
-        fields = '__all__'
-
 class CheckListItemSeralizer(serializers.ModelSerializer):
     class Meta:
         model = CheckListItem
+        fields = '__all__'
+
+
+class CheckListSeralizer(serializers.ModelSerializer):
+    items = CheckListItemSeralizer(source='checklistitem_set', many=True, read_only=True)
+    class Meta:
+        model = CheckList
         fields = '__all__'
