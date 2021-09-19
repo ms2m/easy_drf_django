@@ -18,3 +18,7 @@ python manage.py shell
     https://www.django-rest-framework.org/topics/documenting-your-api/
 
     2. make changes to checklist/urls.py
+
+
+<!-- giving permission to data which user only creates. -->
+create file => core/permissions.py

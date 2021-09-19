@@ -11,6 +11,7 @@ from core.models import CheckList, CheckListItem
 
 
 class CheckListItemSeralizer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = CheckListItem
         fields = '__all__'
@@ -18,6 +19,8 @@ class CheckListItemSeralizer(serializers.ModelSerializer):
 
 class CheckListSeralizer(serializers.ModelSerializer):
     items = CheckListItemSeralizer(source='checklistitem_set', many=True, read_only=True)
+    # user value will be saved the current users who is logged in.
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = CheckList
         fields = '__all__'
