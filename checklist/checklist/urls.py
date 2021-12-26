@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls')),
     path('', include('accounts.urls')),
+    path('', include('testapp.urls')),
 
     path('openapi', get_schema_view(
         title="Your Project",
